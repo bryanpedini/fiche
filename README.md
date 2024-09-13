@@ -111,7 +111,7 @@ To use fiche you have to have netcat installed. You probably already have it - t
 
 # Server-side usage
 
-## Installation
+## Installation (source)
 
 1. Clone:
 
@@ -129,6 +129,24 @@ To use fiche you have to have netcat installed. You probably already have it - t
 
     ```
     sudo make install
+    ```
+
+## Installation (docker)
+
+1. Clone:
+
+    ```
+    git clone https://github.com/solusipse/fiche.git
+    ```
+2. Customize environment variables
+
+    ```
+    nano docker-compose.yml
+    ```
+3. Launch
+
+    ```
+    docker compose up -d
     ```
 
 ### Using Ports on FreeBSD

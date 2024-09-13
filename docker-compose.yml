@@ -1,0 +1,27 @@
+---
+services:
+  fiche:
+    image: solusipse/fiche
+    restart: unless-stopped
+    environment:
+      - HTTPS=no
+      - OUTPUT_DIRECTORY=/opt/fiche/code
+      - DOMAIN=example.com
+      - SLUG_SIZE=4
+      - BUFFER_SIZE=32768
+    ports:
+      - 9999:9999
+    volumes:
+      - fiche-code:/opt/fiche/code
+  web:
+    image: nginx
+    restart: unless-stopped
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx-site.conf:/etc/nginx/conf.d/default.conf
+      - fiche-code:/var/www/html
+
+volumes:
+  fiche-code:
